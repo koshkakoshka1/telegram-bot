@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
 
-TOKEN = os.environ.get("7512431286:AAFAI_t1PjVqNJl4BfsjVaD_EXxJHlyRESQ")
+TOKEN = "7512431286:AAFAI_t1PjVqNJl4BfsjVaD_EXxJHlyRESQ"
 
 def get_daily_analysis():
     matches = [
