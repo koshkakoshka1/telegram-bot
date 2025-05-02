@@ -5,27 +5,31 @@ import os
 TOKEN = os.environ.get("TOKEN")
 
 def get_daily_analysis():
-    return (
-        "🏀 *Матч дня: Бург vs Ле-Портель (3 мая 2025)*\n\n"
-        "*Форма:*\n"
-        "- Бург: 4 поражения подряд, но играет дома\n"
-        "- Ле-Портель: 7 поражений в 8 матчах\n\n"
-        "*Ставки:*\n"
-        "- Победа Бурга с форой -9.5\n"
-        "- Live: победа Бурга во 2-й четверти\n"
-        "- Бетбилдер: победа Бурга + тотал > 160.5\n\n"
-        "_Прогнозируемый счёт: 88–72_"
-    )
+    matches = [
+        "1️⃣ Бург vs Ле-Портель — Победа Бурга с форой -9.5",
+        "2️⃣ Зенит vs ЦСКА — Тотал меньше 162.5",
+        "3️⃣ Реал vs Барселона — Победа Реала",
+        "4️⃣ Локомотив vs УНИКС — 1-я четверть > 39.5",
+        "5️⃣ Панатинаикос vs Олимпиакос — ИТБ2 84.5",
+        "6️⃣ Брешия vs Виртус — Победа Виртуса",
+        "7️⃣ Галатасарай vs Эфес — Победа Эфеса с форой -4",
+        "8️⃣ Анадолу vs Дарюшшафака — Тотал больше 168.5",
+        "9️⃣ Партизан vs Црвена Звезда — Фора -2 на хозяев",
+        "🔟 Монако vs Валенсия — Монако и тотал больше 161.5"
+    ]
+    return "*📊 Прогнозы на сегодня:*
+
+" + "\n".join(matches)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Привет! Напиши /today — и я пришлю матч дня.")
+    await update.message.reply_text("Привет! Напиши /top10 — и я пришлю тебе лучшие ставки дня 🏀")
 
-async def today(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def top10(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_markdown(get_daily_analysis())
 
 app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
-app.add_handler(CommandHandler("today", today))
+app.add_handler(CommandHandler("top10", top10))
 
 print("Бот запущен...")
 app.run_polling()
