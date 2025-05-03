@@ -31,11 +31,14 @@ async def on_startup():
 
 @fastapi_app.post("/webhook")
 async def handle_webhook(request: Request):
-    print("📩 Webhook hit!")  # Лог входящего запроса
+    print("📩 Webhook hit!")
     try:
         data = await request.json()
+        print("✅ JSON получен")
         update = Update.de_json(data, telegram_app.bot)
+        print("🔄 Update распарсен")
         await telegram_app.process_update(update)
+        print("🎉 Обновление обработано")
         return {"ok": True}
     except Exception as e:
         print("❌ Webhook error:", e)
