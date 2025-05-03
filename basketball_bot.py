@@ -6,7 +6,7 @@ from fastapi import FastAPI, Request
 import uvicorn
 
 TOKEN = os.environ.get("7512431286:AAFAI_t1PjVqNJl4BfsjVaD_EXxJHlyRESQ")
-BOT_URL = os.environ.get("BOT_URL")  # В Render добавь переменную окружения BOT_URL (например, https://your-service.onrender.com)
+BOT_URL = os.environ.get("telegram-bot.onrender.com")  # В Render добавь переменную окружения BOT_URL (например, https://your-service.onrender.com)
 
 app = ApplicationBuilder().token(TOKEN).build()
 
