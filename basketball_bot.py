@@ -45,4 +45,4 @@ async def handle_webhook(request: Request):
         return {"error": str(e)}
 
 if __name__ == "__main__":
-    uvicorn.run("basketball_bot:fastapi_app", host="0.0.0.0", port=10000)
+    uvicorn.run("basketball_bot:fastapi_app", host="0.0.0.0", port=8080)
